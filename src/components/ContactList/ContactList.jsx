@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { List, Item, StyledDeleteOutlineIcon } from './ContactList.styled';
-import { fetchContacts, deleteContact } from '../../redux/contacts/operations';
-import { useEffect } from 'react';
+import { deleteContact } from '../../redux/contacts/operations';
+
 import {
   selectContactsError,
   selectFilteredContacts,
@@ -12,10 +12,6 @@ export const ContactList = () => {
   const error = useSelector(selectContactsError);
   const filteredContacts = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
 
   const onDeleteContact = contactId => {
     dispatch(deleteContact(contactId));
